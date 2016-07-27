@@ -1,0 +1,71 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<!-- define angular app -->
+<html ng-app="euroApp">
+    <head>
+        <!-- load bootstrap and fontawesome via CDN -->
+        <link rel="stylesheet" href="public/bootstrap.min.css" />
+        <link rel="stylesheet" href="app.css" />
+        <!-- load angular via CDN -->
+        <script src="public/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <!-- define angular controller -->
+    <body ng-controller="mainController">
+        <div class="container-fluid">
+            <div class="row banner">
+                <img ng-src="img/uefa-euro-2016-banner.jpg" class="img-responsive center-img">
+            </div>
+        </div>
+        <div ng-hide="hasError" class="container-fluid col-sm-12">
+            <div ng-repeat="tableInfo in leagueTable" class="row row-border ">
+                <div class="col-sm-6 table-card">
+                    <h5 class="group-title">Group {{tableInfo.group}}</h5>
+                    <table class="table">
+                        <tr>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Goals</th>
+                            <th>Goals Against</th>
+                            <th>Goal Difference</th>
+                        </tr>
+                        <tr ng-repeat="ranks in tableInfo.ranks">
+                            <td><img class="img-circle flag-img" ng-src={{ranks.flag}}>{{ranks.team}}</td>
+                            <td>{{ranks.points}}</td>
+                            <td>{{ranks.goals}}</td>
+                            <td>{{ranks.goalsAgainst}}</td>
+                            <td>{{ranks.goalDifference}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-6  group-match-result">
+                    <h5>Group Matches Results</h5>
+                    <hr class="horizontal-separator">
+                    <table class="table-no-border table-condensed center-table">
+                        <tr ng-repeat="match in tableInfo.groupMatches">
+                            <td>{{match.homeTeamName}} {{match.goalsHomeTeam}} - {{match.goalsAwayTeam}} {{match.awayTeamName}}</td>
+                        </tr>
+                    </table>
+                   <!--  <ul class="list-inline">
+                        <li ng-repeat="match in tableInfo.groupMatches">{{match.homeTeamName}} {{match.goalsHomeTeam}} - {{match.goalsAwayTeam}} {{match.awayTeamName}}</li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+        
+        <div ng-hide="hasError" class="container-fluid col-sm-12 match-result" ng-repeat="result in gameResults">
+            <h4>{{result.round}}</h4>
+            <ul class="list-unstyled">
+                <li ng-repeat="match in result.matches">
+                    {{match.homeTeamName}} {{match.goalsHomeTeam}} - {{match.goalsAwayTeam}} {{match.awayTeamName}}
+                    <span class="label label-default label-pill pull-xs-right">{{match.matchEnd}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div ng-show="hasError" class="error-box alert alert-danger fade in">
+        <strong>{{errorMessage}}</strong>
+    </div>
+    </div>
+</body>
+</html>

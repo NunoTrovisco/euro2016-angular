@@ -1,0 +1,52 @@
+.banner{
+	background: darkblue;
+}
+
+.center-img {
+	margin: auto	
+}
+
+.flag-img {
+	height: 20px;
+	width: 30px;
+}
+
+.table-card {
+	background-color: lavenderblush;
+}
+
+.group-title {
+	font-size: large;
+}
+
+.group-match-result {
+	background-color: aliceblue;
+	/*padding-top: 2px;*/
+}
+
+.group-match-result li{
+	background-color: white;
+    /*padding: 6px;*/
+}
+
+.match-result {
+	background-color: whitesmoke;
+	padding-bottom: 2px;
+}
+
+.label-default {
+    background-color: cadetblue; !important
+}
+
+.horizontal-separator{
+	border-color: black;
+}
+
+.center-table {
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.row-border {
+	border-style: groove;
+}
