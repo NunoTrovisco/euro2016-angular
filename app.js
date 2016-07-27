@@ -130,7 +130,7 @@ var leagueTablesRequest = function($http, $scope){
             $scope.hasError = true;
             $scope.errorMessage = response.statusText || "Error loading data";
         });
-} 
+}
 
 // create the controller and inject Angular's $scope
 euroApp.controller('mainController', ["$scope", "$http",
